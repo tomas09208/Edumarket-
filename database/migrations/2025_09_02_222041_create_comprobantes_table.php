@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('comprobantes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('persona_id')->unique()->contrained('personas')->onDelete('cascade');
-            $table->timestamps();
+
+             $table->string( 'tipo_comprobante',50)
+             $table->tinyinteger('estado')->default(1)
+
+           $table->timestamps();
         });
     }
 
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('comprobantes');
     }
 };

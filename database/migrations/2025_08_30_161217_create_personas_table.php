@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('razon_social',80);
             $table->string('direcion',80);
             $table->string('tipo_persona',20);
-             $table->TinyInteger('estado',20)->default(1);
-
+            $table->TinyInteger('estado',20)->default(1);
+            $table->foreignId('documento_id')->unique()->contrained('documentos')->onDelete('cascade');
 
              
             $table->timestamps();
