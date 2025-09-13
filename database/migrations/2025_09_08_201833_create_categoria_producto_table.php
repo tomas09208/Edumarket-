@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comprobantes', function (Blueprint $table) {
+        Schema::create('categoria_producto', function (Blueprint $table) {
             $table->id();
-            $table->string( 'tipo_comprobante',50);
-            $table->tinyinteger('estado')->default(1);
+            $table->foreignId('producto_id')->constrained('productos')->onDelete('cascade');
+            $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comprobantes');
+        Schema::dropIfExists('categoria_producto');
     }
 };

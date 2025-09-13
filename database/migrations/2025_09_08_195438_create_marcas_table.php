@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comprobantes', function (Blueprint $table) {
+        Schema::create('marcas', function (Blueprint $table) {
             $table->id();
-            $table->string( 'tipo_comprobante',50);
-            $table->tinyinteger('estado')->default(1);
+            $table->foreignId('caracteristica_id')->constrained('caracteristicas')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comprobantes');
+        Schema::dropIfExists('marcas');
     }
 };
